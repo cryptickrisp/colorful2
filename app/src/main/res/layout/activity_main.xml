@@ -19,7 +19,7 @@
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/exitButton"
+        app:layout_constraintBottom_toTopOf="@+id/copyButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,25 +45,25 @@
         tools:visibility="visible" />
 
     <Button
-        android:id="@+id/exitButton"
+        android:id="@+id/copyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="43dp"
         android:layout_marginRight="43dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/forExit"
+        android:text="@string/forCopy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textbox" />
 
     <Button
-        android:id="@+id/copyButton"
+        android:id="@+id/changeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/forCopy"
+        android:text="@string/forChange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

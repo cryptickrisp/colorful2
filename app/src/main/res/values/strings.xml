@@ -2,5 +2,7 @@
     <string name="app_name">tg_test</string>
     <string name="a" />
     <string name="forExit">Close app</string>
-    <string name="forCopy">Copy text</string>
+    <string name="b">Copy text</string>
+    <string name="forChange">Change text</string>
+    <string name="forCopy">Copy new text</string>
 </resources>
