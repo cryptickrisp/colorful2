@@ -2,7 +2,6 @@ package com.example.tg_test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ClipboardManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,14 +18,14 @@ public class MainActivity extends AppCompatActivity {
         TextView tBox = (TextView) findViewById(R.id.textbox);
         TextView tBox2 = (TextView) findViewById(R.id.textbox2);
         Button change = (Button) findViewById(R.id.changeButton);
-        Button copy = (Button) findViewById(R.id.copyButton);
+        Button copy = (Button) findViewById(R.id.clearButton);
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String str1 = String.valueOf(tBox.getText());
-                tBox2.setText("「いろはにほへと」" + str1 + "「ゑひもせず」");
+                tBox2.setText("「いろはにほへと」" + str1 + "「ゑひもせす」");
 
             }
         });

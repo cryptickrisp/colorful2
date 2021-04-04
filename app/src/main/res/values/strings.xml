@@ -5,4 +5,6 @@
     <string name="b">Copy text</string>
     <string name="forChange">Change text</string>
     <string name="forCopy">Copy new text</string>
+    <string name="firstText">How text you want to change?</string>
+    <string name="newValue">New value.</string>
 </resources>
