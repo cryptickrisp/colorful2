@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
         TextView tBox = (TextView) findViewById(R.id.textbox);
         TextView tBox2 = (TextView) findViewById(R.id.textbox2);
         Button change = (Button) findViewById(R.id.changeButton);
-        Button copy = (Button) findViewById(R.id.clearButton);
+        Button clear = (Button) findViewById(R.id.clearButton);
+        Button copy = (Button) findViewById(R.id.copyButton);
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,6 +27,25 @@ public class MainActivity extends AppCompatActivity {
 
                 String str1 = String.valueOf(tBox.getText());
                 tBox2.setText("「いろはにほへと」" + str1 + "「ゑひもせす」");
+
+            }
+        });
+
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                tBox.setText("");
+                tBox2.setText("");
+
+            }
+        });
+
+        copy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
 
             }
         });

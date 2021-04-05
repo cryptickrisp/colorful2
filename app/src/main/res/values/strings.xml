@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">tg_test</string>
-    <string name="a" />
-    <string name="forExit">Close app</string>
-    <string name="b">Copy text</string>
-    <string name="forChange">Change text</string>
-    <string name="forCopy">Copy new text</string>
-    <string name="firstText">How text you want to change?</string>
-    <string name="newValue">New value.</string>
+    <string name="forChange">Change</string>
+    <string name="forCopy">Copy</string>
+    <string name="forClear">Clear</string>
+    <string name="firstText">Your text.</string>
+    <string name="newValue">New text.</string>
 </resources>
