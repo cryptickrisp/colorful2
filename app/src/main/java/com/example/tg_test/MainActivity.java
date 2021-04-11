@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         TextView tBox = (TextView) findViewById(R.id.textbox);
         TextView tBox2 = (TextView) findViewById(R.id.textbox2);
         Button change = (Button) findViewById(R.id.changeButton);
@@ -34,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String str2 = String.valueOf(tBox2.getText());
-
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,12 +46,11 @@ public class MainActivity extends AppCompatActivity {
         copy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 ClipboardManager clipboard = (ClipboardManager)
                         getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText(str2);
-                clipboard.setPrimaryClip(clip)
-
+                String str2 = String.valueOf(tBox2.getText());
+                ClipData clip = ClipData.newPlainText("henkou sareta string", str2);
+                clipboard.setPrimaryClip(clip);
             }
         });
 
