@@ -2,6 +2,9 @@ package com.example.tg_test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        String str2 = String.valueOf(tBox2.getText());
+
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,10 +50,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                ClipboardManager clipboard = (ClipboardManager)
+                        getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText(str2);
+                clipboard.setPrimaryClip(clip)
 
             }
         });
+
 
         /*
         copy.setOnClickListener(new View.OnClickListener() {
