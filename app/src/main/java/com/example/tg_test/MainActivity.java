@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String str2 = String.valueOf(tBox2.getText());
-
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,10 +48,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                String str2 = String.valueOf(tBox2.getText());
+
                 ClipboardManager clipboard = (ClipboardManager)
                         getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText(str2);
-                clipboard.setPrimaryClip(clip)
+                ClipData clip = ClipData.newPlainText("変更　された　テキスト",str2);
+                clipboard.setPrimaryClip(clip);
 
             }
         });
