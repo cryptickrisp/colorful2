@@ -46,11 +46,14 @@ public class MainActivity extends AppCompatActivity {
         copy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String str2 = String.valueOf(tBox2.getText());
+
                 ClipboardManager clipboard = (ClipboardManager)
                         getSystemService(Context.CLIPBOARD_SERVICE);
-                String str2 = String.valueOf(tBox2.getText());
-                ClipData clip = ClipData.newPlainText("henkou sareta string", str2);
+                ClipData clip = ClipData.newPlainText("変更　された　テキスト",str2);
                 clipboard.setPrimaryClip(clip);
+
             }
         });
 
