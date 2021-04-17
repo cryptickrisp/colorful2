@@ -14,3 +14,4 @@
 .cxx
 local.properties
 /app/src/main/res/raw/sa-creds.json
+/app/src/main/res/raw/credentials.json
