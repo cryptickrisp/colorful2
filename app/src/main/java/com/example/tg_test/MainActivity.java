@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "TG_TEST";
     TextView tBox, tBox2;
     Translate translate;
     private boolean connected;
@@ -42,9 +44,15 @@ public class MainActivity extends AppCompatActivity {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!checkInternetConnection()) {
+                    Log.e(TAG, "no internet connection :(");
+                    return;
+                }
 
                 String str1 = String.valueOf(tBox.getText());
-                tBox2.setText("「いろはにほへと」" + str1 + "「ゑひもせす」");
+//                tBox2.setText("「いろはにほへと」" + str1 + "「ゑひもせす」");
+                String res = translate(str1);
+                tBox2.setText(res);
 
             }
         });
@@ -97,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
             //Get credentials:
             final GoogleCredentials myCredentials = GoogleCredentials.fromStream(is);
 
+            Log.i(TAG, "probably authenticated" + myCredentials.toString());
+
             //Set credentials and get translate service:
             TranslateOptions translateOptions = TranslateOptions.newBuilder().setCredentials(myCredentials).build();
             return translateOptions.getService();
@@ -107,7 +117,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String translate(String in) {
+        Log.i(TAG, "requesting translation of " + in);
         Translation translation = translate.translate(in, Translate.TranslateOption.targetLanguage("ja"), Translate.TranslateOption.model("base"));
+        Log.i(TAG, "got translation: " + translation.toString());
         return translation.getTranslatedText();
     }
 
