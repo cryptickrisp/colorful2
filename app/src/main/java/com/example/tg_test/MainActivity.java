@@ -5,23 +5,39 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.translate.Translate;
+import com.google.cloud.translate.TranslateOptions;
+import com.google.cloud.translate.Translation;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 public class MainActivity extends AppCompatActivity {
+
+    TextView tBox, tBox2;
+    Translate translate;
+    private boolean connected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView tBox = (TextView) findViewById(R.id.textbox);
-        TextView tBox2 = (TextView) findViewById(R.id.textbox2);
+        tBox = (TextView) findViewById(R.id.textbox);
+        tBox2 = (TextView) findViewById(R.id.textbox2);
         Button change = (Button) findViewById(R.id.changeButton);
         Button clear = (Button) findViewById(R.id.clearButton);
         Button copy = (Button) findViewById(R.id.copyButton);
+        translate = getTranslateService();
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // https://medium.com/@yeksancansu/how-to-use-google-translate-api-in-android-studio-projects-7f09cae320c7
-    public void getTranslateService() {
+    public Translate getTranslateService() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -83,20 +99,16 @@ public class MainActivity extends AppCompatActivity {
 
             //Set credentials and get translate service:
             TranslateOptions translateOptions = TranslateOptions.newBuilder().setCredentials(myCredentials).build();
-            translate = translateOptions.getService();
+            return translateOptions.getService();
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
+        return null;
     }
 
-    public void translate() {
-        //Get input text to be translated:
-        originalText = inputToTranslate.getText().toString();
-        Translation translation = translate.translate(originalText, Translate.TranslateOption.targetLanguage("tr"), Translate.TranslateOption.model("base"));
-        translatedText = translation.getTranslatedText();
-
-        //Translated text and original text are set to TextViews:
-        translatedTv.setText(translatedText);
+    public String translate(String in) {
+        Translation translation = translate.translate(in, Translate.TranslateOption.targetLanguage("ja"), Translate.TranslateOption.model("base"));
+        return translation.getTranslatedText();
     }
 
     public boolean checkInternetConnection() {
